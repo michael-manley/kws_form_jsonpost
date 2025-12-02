@@ -9,9 +9,10 @@ The transmitted Data will be generated as array from the Form Fields.
 #### This version supports TYPO3
 ![CUSTOMER](https://img.shields.io/badge/11_LTS-%23A6C694.svg?style=flat-square)
 ![CUSTOMER](https://img.shields.io/badge/12_LTS-%23A6C694.svg?style=flat-square)
+![CUSTOMER](https://img.shields.io/badge/13_LTS-%23A6C694.svg?style=flat-square)
 
 #### Composer support
-`composer req bkindler/kws-form-jsonpost`
+`composer req michael-manley/kws-form-jsonpost`
 
 ***
 
