@@ -1,5 +1,5 @@
 {
-    "name": "bkindler/kws-form-jsonpost",
+    "name": "michael-manley/kws-form-jsonpost",
     "description": "Provides HTTP JSON POST finisher for EXT:form",
     "type": "typo3-cms-extension",
     "license": "GPL-2.0-or-later",
@@ -9,12 +9,18 @@
             "email": "info@kindler-webservices.de",
             "homepage": "https://kindler-webservices.de",
             "role": "Developer"
+        },
+        {
+            "name": "Michael Manley",
+            "email": "mjmanley@wisegs.net",
+            "homepage": "https://www.wisegs.net",
+            "role": "Developer"
         }
     ],
     "require": {
         "php": "^7.4 || ^8.3",
-        "typo3/cms-core": "^11.5 || ^12.4",
-        "typo3/cms-form": "^11.5 || ^12.4 "
+        "typo3/cms-core": "^11.5 || ^12.4 || ^13.4",
+        "typo3/cms-form": "^11.5 || ^12.4 || ^13.4"
     },
     "autoload": {
         "psr-4": {
