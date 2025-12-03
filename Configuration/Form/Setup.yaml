@@ -58,6 +58,23 @@ TYPO3:
                             -
                               name: label
                               title: 'Value'
+                        501:
+                          identifier: 'headers'
+                          templateName: 'Inspector-PropertyGridEditor'
+                          label: 'Headers'
+                          propertyPath: 'options.headers'
+                          fieldExplanationText: 'add additional headers for HTTP Request'
+                          isSortable: true
+                          enableAddRow: true
+                          enableDeleteRow: true
+                          useLabelAsFallbackValue: false
+                          gridColumns:
+                            -
+                              name: value
+                              title: 'Key'
+                            -
+                              name: label
+                              title: 'Value'                              
                         600:
                           identifier: fieldKeyAsInteger
                           templateName: Inspector-CheckboxEditor
@@ -89,6 +106,7 @@ TYPO3:
                     username: ''
                     password: ''
                     variables: {  }
+                    headers: {  }
                     fieldKeyAsInteger: false
               FormEngine:
                 label: 'KwsFormJsonpost'
@@ -139,6 +157,27 @@ TYPO3:
                           label: 'Value'
                           config:
                             type: input
+              headers:
+                title: 'Headers'
+                type: array
+                section: true
+                sectionItemKey: key
+                sectionItemValue: value
+                el:
+                  _arrayContainer:
+                    type: array
+                    title: 'Headers'
+                    el:
+                      key:
+                        TCEforms:
+                          label: 'Key'
+                          config:
+                            type: input
+                      value:
+                        TCEforms:
+                          label: 'Value'
+                          config:
+                            type: input                            
               fieldKeyAsInteger:
                 label: 'Convert field key to integer'
                 config:
