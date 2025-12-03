@@ -13,6 +13,7 @@ namespace Bkindler\KwsFormJsonpost\Finisher;
 
 use TYPO3\CMS\Core\Registry;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Log\LogManager;
 
 class PostFinisher extends \TYPO3\CMS\Form\Domain\Finishers\AbstractFinisher
 {
@@ -29,6 +30,7 @@ class PostFinisher extends \TYPO3\CMS\Form\Domain\Finishers\AbstractFinisher
         $headerfields = $this->parseOption('headers');
         $fieldKeyAsInteger = $this->parseOption('fieldKeyAsInteger');
         $requestMethod = $this->parseOption('requestMethod');
+        $logger = GeneralUtility::makeInstance(LogManager::class)->getLogger(__CLASS__);
 
         // Initialize postfields array
         $postfields = [];
@@ -55,6 +57,7 @@ class PostFinisher extends \TYPO3\CMS\Form\Domain\Finishers\AbstractFinisher
         if (!empty($headerfields)) {
             foreach ($headerfields as $key => $value) {
                 $headers[] = "{$key}: {$value}";
+                $logger->info("Header Test: {$key}: {$value}");
             }
         }
 
@@ -87,6 +90,8 @@ class PostFinisher extends \TYPO3\CMS\Form\Domain\Finishers\AbstractFinisher
 
         // Execute cURL request and capture the result
         $result = curl_exec($ch);
+
+         $logger->info("Result: {$result}");
 
         return null;
     }
