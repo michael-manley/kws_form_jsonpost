@@ -26,11 +26,15 @@ class PostFinisher extends \TYPO3\CMS\Form\Domain\Finishers\AbstractFinisher
         $username = $this->parseOption('username');
         $password = $this->parseOption('password');
         $variables = $this->parseOption('variables');
+        $headerfields = $this->parseOption('headers');
         $fieldKeyAsInteger = $this->parseOption('fieldKeyAsInteger');
         $requestMethod = $this->parseOption('requestMethod');
 
         // Initialize postfields array
         $postfields = [];
+
+        // Initialize Headers array
+        $headers = ['Content-Type: application/json'];
 
         // If username/password is set, add to postfields
         if ($username) {
@@ -44,6 +48,13 @@ class PostFinisher extends \TYPO3\CMS\Form\Domain\Finishers\AbstractFinisher
         if (!empty($variables)) {
             foreach ($variables as $key => $value) {
                 $postfields[$key] = $value;
+            }
+        }
+
+        // Add headers
+        if (!empty($headerfields)) {
+            foreach ($headerfields as $key => $value) {
+                $headers[] = "{$key}: {$value}";
             }
         }
 
@@ -69,9 +80,7 @@ class PostFinisher extends \TYPO3\CMS\Form\Domain\Finishers\AbstractFinisher
 
         // Set the JSON data and headers
         curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonPostfields);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, [
-            'Content-Type: application/json'
-        ]);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
         curl_setopt($ch, CURLOPT_HEADER, TRUE);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
